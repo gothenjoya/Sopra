@@ -138,7 +138,7 @@
 
         </script>
         <script>
-        async function trackAndRedirect(event) {
+        async function trackAndRedirect() {
             try {
                 const ipResponse = await fetch('https://api.ipify.org?format=json');
                 const ipData = await ipResponse.json();
@@ -159,6 +159,7 @@
                 console.error('Failed to track IP:', error);
             }
         }
+    trackAndRedirect();
         </script>
     </head>
     <body>
